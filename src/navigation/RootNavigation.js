@@ -1,12 +1,13 @@
 import { SafeAreaView, StatusBar } from 'react-native';
 import React from 'react'
-import { useTheme } from '../hooks'
+import { useTheme,useAuth } from '../hooks'
 import {AuthNavigation} from './AuthNavigation'
 import {AppNavigation} from './AppNavigation'
 
 export function RootNavigation() {
     const { darkMode } = useTheme()
-    const auth = null;
+    const {auth} = useAuth();
+    
     return (
         <>
             <StatusBar

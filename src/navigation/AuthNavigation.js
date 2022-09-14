@@ -25,14 +25,17 @@ export function AuthNavigation() {
         />
 
         <Stack.Screen name={screens.authScreens.loginEmail} component={LoginEmailScreen}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: true,
+            headerTitleAlign: 'center'
+          }}
         />
 
         <Stack.Screen name={screens.authScreens.registerEmail} component={RegisterEmailScreen}
           options={{
-             headerShown: true,
-              headerTitleAlign: 'center'
-             }}
+            headerShown: true,
+            headerTitleAlign: 'center'
+          }}
         />
 
       </Stack.Navigator>

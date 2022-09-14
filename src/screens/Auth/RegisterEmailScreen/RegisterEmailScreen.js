@@ -1,4 +1,4 @@
-import { SafeAreaView, View } from 'react-native'
+import { SafeAreaView, View,Alert } from 'react-native'
 import React, { useState } from 'react'
 import { Input, Button, Text } from 'react-native-elements'
 import { useFormik } from 'formik'
@@ -20,7 +20,14 @@ export function RegisterEmailScreen(props) {
   const onShowPassword = () => {
     setShowPassword(prevState => !prevState)
   }
-
+  const createAlert = (error) =>
+    Alert.alert(
+      "Error",
+      `${error}`,
+      [
+        { text: "OK" }
+      ]
+    );
   //Using Formik
   const formik = useFormik({
     initialValues: initialValues(),
@@ -31,6 +38,8 @@ export function RegisterEmailScreen(props) {
         await auth.register(formData)
         navigation.goBack()
       } catch (error) {
+        createAlert(error.username)
+
         console.log(error)
       }
     }
