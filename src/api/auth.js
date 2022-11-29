@@ -1,4 +1,4 @@
-import { ENV } from '../utils'
+import { ENV } from '../utils';
 
 export class Auth {
     async register(data) {
@@ -38,19 +38,19 @@ export class Auth {
         return result
     }
 
-    async refreshToken(token){
+    async refreshToken(token) {
         const url = `${ENV.BASE_API}/${ENV.API_ROUTES.REFRESH_TOKEN}/`;
         const params = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({refresh:token})
+            body: JSON.stringify({ refresh: token })
         }
         const response = await fetch(url, params)
         const result = await response.json()
 
-        if(response.status !== 200){
+        if (response.status !== 200) {
             throw result
         }
         return result

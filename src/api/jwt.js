@@ -6,8 +6,8 @@ import {ENV} from '../utils'
 
 //Save tokens in storage
 
-async function saveToken(acces,refresh){
-    await AsyncStorage.setItem(ENV.JWT.ACCESS_TOKEN,acces)
+async function saveToken(access,refresh){
+    await AsyncStorage.setItem(ENV.JWT.ACCESS_TOKEN,access)
     await AsyncStorage.setItem(ENV.JWT.REFRESH_TOKEN,refresh)
 }
 
