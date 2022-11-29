@@ -1,9 +1,9 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AuthScreen, LoginEmailScreen, RegisterEmailScreen } from '../screens/Auth'
-import { getDefaultNavigationTheme, screens } from '../utils';
+import React from 'react';
 import { useTheme } from '../hooks';
+import { AuthScreen, LoginEmailScreen, RegisterEmailScreen } from '../screens/Auth';
+import { getDefaultNavigationTheme, screens } from '../utils';
 
 
 const Stack = createNativeStackNavigator();
@@ -18,8 +18,11 @@ export function AuthNavigation() {
         screenOptions={
           {
             headerTransparent: true,
+
           }
-        }>
+        }
+
+      >
         <Stack.Screen name={screens.authScreens.auth} component={AuthScreen}
           options={{ headerShown: false }}
         />
