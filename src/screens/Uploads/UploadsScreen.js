@@ -1,13 +1,32 @@
-import React from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import * as ImagePicker from 'expo-image-picker'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
-import { Text } from 'react-native-elements'
+import { screens } from '../../utils'
 
 export function UploadsScreen(props) {
 
-    return (
-        <View>
-            <Text>UploadsScreens</Text>
+    useFocusEffect(
+        useCallback(() => {
+            (
+                async () => {
+                    const result = await ImagePicker.launchImageLibraryAsync({
+                        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+                        allowsEditing: true,
+                        aspect: [4, 3],
+                        quality: 1,
+                    })
+                    if (result.cancelled === true) {
+                        props.navigation.goBack()
+                    } else {
+                        props.navigation.navigate(screens.uploads.publishVideo, { videoUri: result.uri })
+                    }
+                }
 
-        </View>
+            )()
+        }, [])
+    )
+    return (
+        <View />
     )
 }
