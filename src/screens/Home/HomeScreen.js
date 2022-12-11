@@ -1,14 +1,17 @@
-import React from 'react'
-import { SafeAreaView } from 'react-native'
-import { Text } from 'react-native-elements'
-
+import React, { useState } from 'react'
+import { FollowingVideos, ForYouVideos, Header } from '../../components/Home'
+import { ENV } from '../../utils'
 export function HomeScreen() {
+    const [typeVideos, setTypeVideos] = useState(ENV.TYPE_VIDEO.FOR_YOU)
+
 
 
     return (
-        <SafeAreaView>
-            <Text>HomeScreen</Text>
-
-        </SafeAreaView>
+        <>
+            <Header typeVideos={typeVideos} setTypeVideos={setTypeVideos} />
+            {
+                typeVideos === ENV.TYPE_VIDEO.FOLLOWING ? <FollowingVideos /> : <ForYouVideos />
+            }
+        </>
     )
 }

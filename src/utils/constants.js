@@ -1,4 +1,4 @@
-const SERVER_IP = "IP"
+const SERVER_IP = "192.168.0.10:8000"
 
 export const ENV = {
     BASE_PATH: `http://${SERVER_IP}`,
@@ -13,6 +13,11 @@ export const ENV = {
         ACCESS_TOKEN: "access",
         REFRESH_TOKEN: "refresh"
     },
+    TYPE_VIDEO: {
+        FOLLOWING: "following",
+        FOR_YOU: "for_you"
+    },
+    TAB_MENU_HEIGHT: 50,
 
 }
 
