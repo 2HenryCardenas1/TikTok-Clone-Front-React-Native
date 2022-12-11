@@ -43,4 +43,19 @@ export class Video {
         return result
 
     }
+
+    async getAllVideos(token) {
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO}/`
+        const params = {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+
+        }
+        const response = await fetch(url, params)
+        const result = await response.json()
+        if (response.status !== 200) throw result
+        return result
+    }
 }
