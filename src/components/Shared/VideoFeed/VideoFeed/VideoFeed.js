@@ -2,13 +2,13 @@ import { useFocusEffect } from '@react-navigation/native'
 import { Video } from 'expo-av'
 import React, { useCallback, useRef, useState } from 'react'
 import { Pressable, View } from 'react-native'
-import { Text } from 'react-native-elements'
 import { Info } from './Info'
+import { Profile } from './Profile'
 import { TimeLine } from './TimeLine'
 import { styles } from './VideoFeed.styles'
 
 export function VideoFeed(props) {
-    const { item, index, indexShow } = props
+    const { item, index, indexShow, style } = props
     const video = useRef(null)
     const [isStarted, setIsStarted] = useState(false)
     const [videoStatus, setVideoStatus] = useState(null)
@@ -27,7 +27,7 @@ export function VideoFeed(props) {
     )
 
     return (
-        <Pressable style={styles.container} onPress={startPauseVideo}>
+        <Pressable style={[styles.container, style]} onPress={startPauseVideo}>
             <Video
                 ref={video}
                 style={styles.video}
@@ -43,7 +43,7 @@ export function VideoFeed(props) {
                     <Info username={user.username} description={item.description} />
                 </View>
                 <View style={styles.blockRight}>
-                    <Text>Right</Text>
+                    <Profile idUser={item.user} image={user.avatar} />
                 </View>
 
             </View>
