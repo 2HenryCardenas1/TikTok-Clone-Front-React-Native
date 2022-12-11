@@ -17,6 +17,7 @@ export function TabNavigation() {
                 tabBarStyle: {
                     backgroundColor: "#252525",
                     borderTopWidth: 0,
+                    height: 50,
                 },
                 tabBarIcon: (props) => (tabIcon({ route, ...props }))
 
