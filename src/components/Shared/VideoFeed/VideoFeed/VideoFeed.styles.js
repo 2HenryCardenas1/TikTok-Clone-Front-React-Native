@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
         width: "15%",
         height: "100%",
         justifyContent: "flex-end",
-        paddingBottom: 100
+        paddingBottom: 100,
+
     }
 })
