@@ -2,10 +2,10 @@ import React from 'react'
 import { View } from 'react-native'
 import { Text } from 'react-native-elements'
 
-export function FollowedScreen() {
+export function FollowingScreen() {
     return (
         <View>
-            <Text>FollowedScreen</Text>
+            <Text>FollowingScreen</Text>
         </View>
     )
 }
