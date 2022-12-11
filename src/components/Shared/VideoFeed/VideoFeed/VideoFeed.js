@@ -36,7 +36,7 @@ export function VideoFeed(props) {
                 style={styles.video}
                 source={{ uri: item.video }}
                 resizeMode="cover"
-
+                isLooping
                 shouldPlay={isStarted}
                 onPlaybackStatusUpdate={(status) => setVideoStatus(status)}
 
