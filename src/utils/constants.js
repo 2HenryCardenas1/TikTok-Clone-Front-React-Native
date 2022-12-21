@@ -11,6 +11,7 @@ export const ENV = {
         VIDEO_ACTIONS: 'video/actions',
         VIDEO_LIKE: 'video_like',
         COMMENTS: 'comment',
+        ME: 'user/me',
 
     },
     JWT: {
