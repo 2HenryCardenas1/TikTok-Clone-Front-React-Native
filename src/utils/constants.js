@@ -10,6 +10,7 @@ export const ENV = {
         VIDEO: 'video',
         VIDEO_ACTIONS: 'video/actions',
         VIDEO_LIKE: 'video_like',
+        COMMENTS: 'comment',
 
     },
     JWT: {
