@@ -7,6 +7,7 @@ export const darkTheme = {
         background: '#121212',
         backgroundSecondary: '#1f1f1f',
         border: '#1f1f1f',
+
     },
 
     //Change color of the text
@@ -19,12 +20,12 @@ export const darkTheme = {
 
     //Change color of the icons
 
-    Icon : {
+    Icon: {
         iconStyle: {
-            color: '#fff',  
+            color: '#fff',
         }
     },
-    
+
     //Change color of the inputs
 
     Input: {
@@ -38,6 +39,12 @@ export const darkTheme = {
     Button: {
         buttonStyle: {
             backgroundColor: '#2185d0',
+        }
+    },
+
+    BackgroundContainer: {
+        style: {
+            backgroundColor: '#333333',
         }
     }
 }

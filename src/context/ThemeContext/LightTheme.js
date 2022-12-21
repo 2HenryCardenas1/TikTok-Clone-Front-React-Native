@@ -39,5 +39,10 @@ export const lightTheme = {
         buttonStyle: {
             backgroundColor: '#2185d0',
         }
+    },
+    BackgroundContainer: {
+        style: {
+            backgroundColor: '#333333',
+        }
     }
 }
