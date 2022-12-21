@@ -8,7 +8,8 @@ export function AccountStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen name={screens.account.account} component={AccountScreen} options={{
-                headerShown: false
+                headerTitleAlign: "center",
+
             }} />
             <Stack.Group screenOptions={{ presentation: "modal" }}>
                 <Stack.Screen name={screens.account.settings} component={SettingsScreen} options={{

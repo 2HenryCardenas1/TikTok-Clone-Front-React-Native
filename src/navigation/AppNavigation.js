@@ -36,7 +36,7 @@ export function AppNavigation() {
           headerTransparent: true,
         }} />
 
-        <Stack.Group screenOptions={{ presentation: "modal" }}>
+        <Stack.Group screenOptions={{ presentation: "modal", animation: 'slide_from_bottom' }}>
           <Stack.Screen name={screens.app.followers} component={FollowersScreen} options={{
 
             headerShown: false
