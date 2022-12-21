@@ -58,4 +58,130 @@ export class Video {
         if (response.status !== 200) throw result
         return result
     }
+
+    async shareVideo(token, idVideo, total) {
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_ACTIONS}/${idVideo}/`
+        const params = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                share_counter: total
+            }),
+
+
+        }
+
+        const response = await fetch(url, params)
+
+        const result = await response.json()
+        if (response.status !== 200) throw result
+        return result
+
+    }
+
+    async isLike(token, idVideo, idUser) {
+        const filter = `user=${idUser}&video=${idVideo}`
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_LIKE}/?${filter}`
+        const params = {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+
+        }
+        const response = await fetch(url, params)
+        const result = await response.json()
+
+        if (response.status !== 200) throw result
+        if (result.length > 0) return true
+        return false
+
+    }
+
+    async createLike(token, idVideo, idUser) {
+
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_LIKE}/`
+        const params = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                user: idUser,
+                video: idVideo,
+
+            })
+        }
+
+        const response = await fetch(url, params)
+        const result = await response.json()
+
+        if (response.status !== 201) throw result
+        return result
+    }
+
+    async updateLikes(token, idVideo, likes) {
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_ACTIONS}/${idVideo}/`
+
+        const params = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                like_counter: likes
+            })
+        }
+
+        const response = await fetch(url, params)
+        const result = await response.json()
+
+        if (response.status !== 200) throw result
+        return result
+    }
+
+
+    async getLike(token, idVideo, idUser) {
+        const filter = `user=${idUser}&video=${idVideo}`
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_LIKE}/?${filter}`
+        const params = {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+
+        }
+        const response = await fetch(url, params)
+        const result = await response.json()
+
+        if (response.status !== 200) throw result
+
+        return result[0]
+
+    }
+    async deleteLike(token, idLike) {
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_LIKE}/${idLike}/`
+        const params = {
+            method: 'DELETE',
+            headers: {
+
+                Authorization: `Bearer ${token}`
+
+            }
+
+        }
+
+        const response = await fetch(url, params)
+
+
+        if (response.status !== 204) throw 'Error al eliminar el like'
+        return true
+    }
 }

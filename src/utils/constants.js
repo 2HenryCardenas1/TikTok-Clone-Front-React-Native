@@ -1,4 +1,4 @@
-const SERVER_IP = "192.168.0.10:8000"
+const SERVER_IP = "192.168.11.11:8000"
 
 export const ENV = {
     BASE_PATH: `http://${SERVER_IP}`,
@@ -7,7 +7,10 @@ export const ENV = {
         REGISTER: "auth/register",
         LOGIN: "auth/login",
         REFRESH_TOKEN: "auth/refresh_token",
-        VIDEO: 'video'
+        VIDEO: 'video',
+        VIDEO_ACTIONS: 'video/actions',
+        VIDEO_LIKE: 'video_like',
+
     },
     JWT: {
         ACCESS_TOKEN: "access",
