@@ -40,7 +40,7 @@ export function AccountScreen(props) {
             <Account.Header avatar={user.avatar} username={user.username} />
             <Account.Follows idUser={user.id} />
             <Account.Settings instagram={user.instagram} />
-
+            <Account.Info description={user.description} website={user.website} />
             <Tab value={tabActive} onChange={(e) => setTabActive(e)} indicatorStyle={styles.indicatorStyle}>
 
                 <Tab.Item label="Follow" containerStyle={styles.containerTabStyle}
@@ -49,10 +49,10 @@ export function AccountScreen(props) {
                         name: 'grid',
                     }}
                 />
-                <Tab.Item label="Follow" containerStyle={styles.containerTabStyle}
+                <Tab.Item label="Favorites" containerStyle={styles.containerTabStyle}
                     icon={{
                         type: 'material-community',
-                        name: 'format-list-bulleted',
+                        name: 'heart',
                     }}
                 />
             </Tab>
