@@ -2,7 +2,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import { capitalize } from 'lodash'
 import React, { useCallback, useState } from 'react'
 import { ScrollView } from 'react-native'
-import { Tab, TabView, Text } from 'react-native-elements'
+import { Tab, TabView } from 'react-native-elements'
 import { User } from '../../../api'
 import { Account } from '../../../components/Account'
 import { useAuth } from '../../../hooks'
@@ -63,7 +63,7 @@ export function AccountScreen(props) {
                 </TabView.Item>
 
                 <TabView.Item>
-                    <Text>Favorites</Text>
+                    <Account.VideosFavorites idUser={user.id} />
                 </TabView.Item>
             </TabView>
 
