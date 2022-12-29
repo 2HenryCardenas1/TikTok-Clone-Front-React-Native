@@ -59,8 +59,9 @@ export function AccountScreen(props) {
 
             <TabView value={tabActive} onChange={(e) => setTabActive(e)}>
                 <TabView.Item>
-                    <Text>Follow</Text>
+                    <Account.Videos idUser={user.id} />
                 </TabView.Item>
+
                 <TabView.Item>
                     <Text>Favorites</Text>
                 </TabView.Item>
