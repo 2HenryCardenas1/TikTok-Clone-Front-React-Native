@@ -75,6 +75,21 @@ export class Video {
 
     }
 
+    async getFavoriteVideos(token, idUser) {
+        const filter = `user=${idUser}`
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_LIKE}/?${filter}`
+        const params = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }
+        const response = await fetch(url, params)
+        const result = await response.json()
+        if (response.status !== 200) throw result
+        return result
+    }
+
     async shareVideo(token, idVideo, total) {
         const url = `${ENV.BASE_API}/${ENV.API_ROUTES.VIDEO_ACTIONS}/${idVideo}/`
         const params = {
@@ -200,4 +215,6 @@ export class Video {
         if (response.status !== 204) throw 'Error al eliminar el like'
         return true
     }
+
+
 }
