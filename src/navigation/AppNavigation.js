@@ -21,7 +21,7 @@ export function AppNavigation() {
         } />
 
         <Stack.Screen name={screens.app.user} component={UserScreen} options={{
-          title: ""
+          headerTitleAlign: "center",
         }} />
         <Stack.Screen name={screens.app.video} component={VideoScreen} options={{
           title: "",
