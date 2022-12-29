@@ -39,7 +39,7 @@ export function AccountScreen(props) {
         <ScrollView>
             <Account.Header avatar={user.avatar} username={user.username} />
             <Account.Follows idUser={user.id} />
-
+            <Account.Settings instagram={user.instagram} />
 
             <Tab value={tabActive} onChange={(e) => setTabActive(e)} indicatorStyle={styles.indicatorStyle}>
 
