@@ -1,5 +1,4 @@
 import { useFocusEffect } from '@react-navigation/native'
-import { capitalize } from 'lodash'
 import React, { useCallback, useState } from 'react'
 import { ScrollView } from 'react-native'
 import { Tab, TabView } from 'react-native-elements'
@@ -24,7 +23,7 @@ export function AccountScreen(props) {
             (async () => {
                 try {
                     const response = await userApi.me(accessToken)
-                    navigation.setOptions({ title: capitalize(response.first_name) })
+                    navigation.setOptions({ title: response.first_name })
                     setUser(response)
                 } catch (error) {
                     console.error(error)
