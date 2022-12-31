@@ -2,6 +2,7 @@ import { Follows } from './Follows'
 import { Header } from './Header'
 import { Info } from './Info'
 import { Settings } from './Settings'
+import { Social } from './Social'
 import { Videos } from './Videos'
 import { VideosFavorites } from './VideosFavorites'
 export const Account = {
@@ -10,5 +11,6 @@ export const Account = {
     Settings,
     Info,
     Videos,
-    VideosFavorites
+    VideosFavorites,
+    Social
 }
