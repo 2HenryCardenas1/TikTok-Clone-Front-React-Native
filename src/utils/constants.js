@@ -1,4 +1,4 @@
-const SERVER_IP = "192.168.11.15:8000"
+const SERVER_IP = "192.168.11.16:8000"
 
 export const ENV = {
     BASE_PATH: `http://${SERVER_IP}`,
@@ -13,6 +13,7 @@ export const ENV = {
         COMMENTS: 'comment',
         ME: 'user/me',
         USERS: 'users',
+        FOLLOW: 'follow',
         FOLLOWEDS_COUNT: 'follow/followed/count',
         FOLLOWERS_COUNT: 'follow/followers/count',
 
