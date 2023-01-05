@@ -5,7 +5,7 @@ import { Text } from 'react-native-elements'
 export function FollowingVideos() {
     return (
         <SafeAreaView>
-            <Text>FollowingScreen</Text>
+            <Text>FollowedsScreen</Text>
         </SafeAreaView>
     )
 }

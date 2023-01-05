@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 import { useTheme } from '../hooks'
-import { FollowersScreen, FollowingScreen, UserScreen, VideoScreen, VideosFavoritesScreen, VideosPublishedScreen } from '../screens/Shared'
+import { FollowedsScreen, FollowersScreen, UserScreen, VideoScreen, VideosFavoritesScreen, VideosPublishedScreen } from '../screens/Shared'
 import { getDefaultNavigationTheme, screens } from '../utils'
 import { TabNavigation } from './TabNavigation'
 
@@ -41,7 +41,7 @@ export function AppNavigation() {
 
             headerShown: false
           }} />
-          <Stack.Screen name={screens.app.followed} component={FollowingScreen} options={{
+          <Stack.Screen name={screens.app.followed} component={FollowedsScreen} options={{
             headerShown: false
           }} />
         </Stack.Group>
