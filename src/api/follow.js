@@ -119,4 +119,40 @@ export class Follow {
         return result[0]
 
     }
+
+    async getFolloweds(token, userId) {
+        const filter = `user=${userId}`
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.FOLLOW}/?${filter}`
+        const params = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        const response = await fetch(url, params)
+        const result = await response.json()
+
+        if (response.status !== 200) throw result
+
+        return result
+    }
+
+
+    async getFollowers(token, userId) {
+        const filter = `user_followed=${userId}`
+        const url = `${ENV.BASE_API}/${ENV.API_ROUTES.FOLLOW}/?${filter}`
+        const params = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        const response = await fetch(url, params)
+        const result = await response.json()
+
+        if (response.status !== 200) throw result
+
+        return result
+    }
+
 }
