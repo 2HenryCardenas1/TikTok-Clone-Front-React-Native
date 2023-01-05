@@ -1,13 +1,51 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Linking, View } from 'react-native'
 import { Button } from 'react-native-elements'
+import { Follow } from '../../../api'
+import { useAuth } from '../../../hooks'
 import { styles } from './Social.styles'
+const followApi = new Follow()
 export function Social(props) {
     const { idUser, instagram } = props
     const [isFollowing, setIsFollowing] = useState(undefined)
+    const { accessToken, auth } = useAuth()
     const goToInstagram = () => {
         Linking.openURL(`https://www.instagram.com/${instagram}`)
     }
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await followApi.followUser(accessToken, auth.user_id, idUser)
+                setIsFollowing(response)
+            } catch (error) {
+                console.error(error)
+            }
+        })()
+    }, [])
+
+    const followUser = async () => {
+
+        try {
+            await followApi.follow(accessToken, auth.user_id, idUser)
+            setIsFollowing(true)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const unFollowUser = async () => {
+        try {
+            const response = await followApi.getFollowing(accessToken, auth.user_id, idUser)
+            const idFollow = response.id
+
+            await followApi.unFollow(accessToken, idFollow)
+            setIsFollowing(false)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <View style={styles.content}>
             {isFollowing === false ? (
@@ -15,7 +53,7 @@ export function Social(props) {
                     title='Follow'
                     buttonStyle={styles.btnFollow}
                     containerStyle={styles.btnFollowContainer}
-                    onPres={() => console.log('Follow')}
+                    onPress={followUser}
                 />) : null}
 
 
@@ -27,7 +65,7 @@ export function Social(props) {
                     }}
                     buttonStyle={styles.btnUnfollowing}
                     containerStyle={styles.btnUnfollowingContainer}
-                    onPres={() => console.log('Unfollowing')}
+                    onPress={unFollowUser}
                 />
             ) : null}
 
