@@ -1,15 +1,19 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { Avatar, Icon } from 'react-native-elements'
 import { LOGO } from '../../../../../assets/images'
+import { Follow } from '../../../../api'
 import { useAuth } from '../../../../hooks'
 import { screens } from '../../../../utils'
 import { styles } from './Profile.styles'
+
+const followApi = new Follow()
 export function Profile(props) {
 
     const { idUser, image } = props
-    const { auth } = useAuth()
+    const [isFollowing, setIsFollowing] = useState(true)
+    const { auth, accessToken } = useAuth()
     const { name } = useRoute()
     const navigation = useNavigation()
     const isMyVideo = idUser === auth.user_id
@@ -22,9 +26,30 @@ export function Profile(props) {
             navigation.navigate(screens.app.user, { idUser })
         }
     }
-    const followUser = () => {
-        console.log("followUser", idUser)
+    const followUser = async () => {
+        try {
+            await followApi.follow(accessToken, auth.user_id, idUser)
+            setIsFollowing(true)
+        } catch (error) {
+            console.error(error)
+        }
     }
+
+
+    useEffect(() => {
+        (
+            async () => {
+                try {
+                    const response = await followApi.followUser(accessToken, auth.user_id, idUser)
+                    setIsFollowing(response)
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+        )()
+    }, [])
+
+
     return (
         <View style={styles.content}>
             <Avatar
@@ -34,12 +59,14 @@ export function Profile(props) {
                 avatarStyle={styles.avatar}
                 onPress={goToProfile}
             />
-            <Icon
-                type='material-community'
-                name='plus'
-                size={14}
-                containerStyle={styles.iconContainer}
-                onPress={followUser} />
+            {!isMyVideo && !isFollowing && (
+                <Icon
+                    type='material-community'
+                    name='plus'
+                    size={14}
+                    containerStyle={styles.iconContainer}
+                    onPress={followUser} />
+            )}
         </View>
     )
 }
