@@ -27,7 +27,7 @@ export function Videos(props) {
                 }
             }
         )()
-    }, [])
+    }, [idUser])
 
     if (!videos) return null
 

@@ -25,7 +25,7 @@ export function VideosFavorites(props) {
                     console.error(error)
                 }
             })()
-        }, [])
+        }, [idUser])
     )
     if (!videos) return null
 
