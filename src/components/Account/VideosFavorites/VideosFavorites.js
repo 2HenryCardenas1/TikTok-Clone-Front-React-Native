@@ -30,7 +30,7 @@ export function VideosFavorites(props) {
     if (!videos) return null
 
     const goToVideo = (idVideo) => {
-        navigation.navigate(screens.app.videosFavorites, { idVideo: idVideo.id, idUser })
+        navigation.navigate(screens.app.videosFavorites, { idVideo: idVideo.video_data.id, idUser })
     }
     return (
         <View style={styles.content}>
