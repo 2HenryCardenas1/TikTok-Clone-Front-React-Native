@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { Icon, Text } from 'react-native-elements'
-import { Video } from '../../../../api'
+import { Notification, Video } from '../../../../api'
 import { useAuth } from '../../../../hooks'
-import { nFormatter } from '../../../../utils'
+import { ENV, nFormatter } from '../../../../utils'
 import { styles } from './Likes.styles'
 const video = new Video()
+const notification = new Notification()
 export function Likes(props) {
     const { idVideo, likesCounter, idTargetUser } = props
 
@@ -31,6 +32,13 @@ export function Likes(props) {
             const newLikes = likes + 1
             await video.createLike(accessToken, idVideo, idUser)
             await video.updateLikes(accessToken, idVideo, newLikes)
+            await notification.create({
+                token: accessToken,
+                idTargetUser: idTargetUser,
+                idUserFollower: idUser,
+                idVideo: idVideo,
+                typeNotification: ENV.TYPE_NOTIFICATION.LIKE
+            })
             setLikes(newLikes)
             setIsLike(true)
         } catch (error) {

@@ -17,6 +17,7 @@ export const ENV = {
         FOLLOW: 'follow',
         FOLLOWEDS_COUNT: 'follow/followed/count',
         FOLLOWERS_COUNT: 'follow/followers/count',
+        NOTIFICATIONS: 'notification',
 
 
     },
@@ -29,6 +30,13 @@ export const ENV = {
         FOR_YOU: "for_you"
     },
     TAB_MENU_HEIGHT: 50,
+    TYPE_NOTIFICATION: {
+        FOLLOW: "FOLLOW",
+        LIKE: 'LIKE',
+        COMMENT: "COMMENT",
+        SHARED: "SHARED"
+
+    }
 
 }
 
