@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { Avatar, Icon } from 'react-native-elements'
 import { LOGO } from '../../../../../assets/images'
-import { Follow } from '../../../../api'
+import { Follow, Notification } from '../../../../api'
 import { useAuth } from '../../../../hooks'
-import { screens } from '../../../../utils'
+import { ENV, screens } from '../../../../utils'
 import { styles } from './Profile.styles'
 
 const followApi = new Follow()
+const notificationApi = new Notification()
+
 export function Profile(props) {
 
     const { idUser, image } = props
@@ -29,6 +31,12 @@ export function Profile(props) {
     const followUser = async () => {
         try {
             await followApi.follow(accessToken, auth.user_id, idUser)
+            await notificationApi.create({
+                token: accessToken,
+                idTargetUser: idUser,
+                idUserFollower: auth.user_id,
+                typeNotification: ENV.TYPE_NOTIFICATION.FOLLOW
+            })
             setIsFollowing(true)
         } catch (error) {
             console.error(error)
@@ -41,7 +49,9 @@ export function Profile(props) {
             async () => {
                 try {
                     const response = await followApi.followUser(accessToken, auth.user_id, idUser)
+
                     setIsFollowing(response)
+
                 } catch (error) {
                     console.error(error)
                 }
