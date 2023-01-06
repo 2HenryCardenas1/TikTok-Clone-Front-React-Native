@@ -34,7 +34,7 @@ export const ENV = {
         FOLLOW: "FOLLOW",
         LIKE: 'LIKE',
         COMMENT: "COMMENT",
-        SHARED: "SHARED"
+        SHARE: "SHARE"
 
     }
 

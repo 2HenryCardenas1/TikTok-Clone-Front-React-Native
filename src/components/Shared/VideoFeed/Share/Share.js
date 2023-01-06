@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Share as ShareRN, View } from 'react-native'
 import { Icon, Text } from 'react-native-elements'
-import { Video } from '../../../../api'
+import { Notification, Video } from '../../../../api'
 import { useAuth } from '../../../../hooks'
-import { nFormatter } from '../../../../utils'
+import { ENV, nFormatter } from '../../../../utils'
 import { styles } from './Share.styles'
 const videoApi = new Video()
-
+const notificationApi = new Notification()
 export function Share(props) {
     const { idVideo, shareCounter, idTargetUser } = props
     const { auth, accessToken } = useAuth()
@@ -20,6 +20,13 @@ export function Share(props) {
             })
             if (result.action === ShareRN.sharedAction) {
                 onUpdateShareCounter()
+                await notificationApi.create({
+                    token: accessToken,
+                    idTargetUser: idTargetUser,
+                    idUserFollower: auth.user_id,
+                    idVideo: idVideo,
+                    typeNotification: ENV.TYPE_NOTIFICATION.SHARE
+                })
             }
 
         } catch (error) {
