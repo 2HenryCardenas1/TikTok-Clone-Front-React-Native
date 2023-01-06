@@ -10,12 +10,14 @@ export const ENV = {
         VIDEO: 'video',
         VIDEO_ACTIONS: 'video/actions',
         VIDEO_LIKE: 'video_like',
+        FOLLOWINGS_VIDEOS: 'followings_videos',
         COMMENTS: 'comment',
         ME: 'user/me',
         USERS: 'users',
         FOLLOW: 'follow',
         FOLLOWEDS_COUNT: 'follow/followed/count',
         FOLLOWERS_COUNT: 'follow/followers/count',
+
 
     },
     JWT: {
